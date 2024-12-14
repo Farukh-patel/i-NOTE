@@ -67,7 +67,7 @@ function Notes(props) {
         Launch demo modal
       </button>
 
-      {/* Modal for editing an existing note */}
+      {/* // Modal for editing an existing note  */}
       <div
         className="modal fade"
         id="staticBackdrop"

@@ -8,15 +8,15 @@ const path = require("path");
 const router = express.Router();
 const User = require("../models/User");
 const fetchUser = require("../midlewares/fetchUser");
-const JWT_SECRET = "farukhis$uperman"; // Replace with an environment variable in production
+const JWT_SECRET = "farukhis$uperman"; 
 
 // Configure Multer for file storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "backend/uploads/"); // Directory to store uploaded files
+    cb(null, "backend/uploads/"); 
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Append timestamp to file name
+    cb(null, Date.now() + path.extname(file.originalname)); 
   },
 });
 
@@ -34,9 +34,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({ storage, fileFilter }); // Initialize Multer
 
 // POST route to create a new user
-router.post(
-  "/createuser",
-  upload.single("profileImage"), // Handle file upload
+router.post(  "/createuser", upload.single("profileImage"), // Handle file upload
   [
     body("name", "Enter a valid name").isLength({ min: 3 }),
     body("email", "Enter a valid email").isEmail(),
@@ -63,14 +61,14 @@ router.post(
       // Handle profile image upload
       let profileImagePath = req.file
         ? `/uploads/${req.file.filename}`
-        : "/uploads/default-profile.png"; // Default profile image if none uploaded
+        : "/uploads/default-profile.png"; 
 
       // Create new user
       user = await User.create({
         name: req.body.name,
         email: req.body.email,
         password: secPas,
-        profileImage: profileImagePath, // Save file path in the database
+        profileImage: profileImagePath, 
       });
 
       // Generate auth token

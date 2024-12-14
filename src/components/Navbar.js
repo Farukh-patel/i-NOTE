@@ -20,10 +20,10 @@ function Navbar(props) {
     <>
       <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
         <div className="container-fluid">
-          {/* Replace image with video */}
+        
           <Link className="navbar-brand d-flex align-items-center" to="/home">
             <video
-              src="/logoVideo2.mp4" // Replace with the actual path to your video
+              src="/logoVideo2.mp4"
               width="45"
               height="45"
               autoPlay

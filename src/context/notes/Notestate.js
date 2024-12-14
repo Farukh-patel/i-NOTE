@@ -22,9 +22,9 @@ const NoteState = (props) => {
       });
       const json = await response.json(); // Parsing response to JSON
       setnotes(json); // Updating the notes state with fetched data
-      // console.log(json); // Logging the fetched notes
+
     } catch (error) {
-      console.error("Failed to fetch all  notes:", error); // Error handling
+      console.error("Failed to fetch all  notes:", error);
     }
   };
 
@@ -42,11 +42,11 @@ const NoteState = (props) => {
       });
   
       const note = await response.json(); // Parse the response
-      // console.log("Response from backend:", note); // Debugging
+      // console.log("Response from backend:", note); 
   
       if (note) {
         setnotes(notes.concat(note)); // Update state
-        // console.log("Updated notes:", notes.concat(note)); // Debugging
+        // console.log("Updated notes:", notes.concat(note)); 
   
         // Redirect to the Home page
         navigate("/home");
@@ -87,8 +87,7 @@ const NoteState = (props) => {
 
   
 
-  // Edit a note-=--2
-
+  
   const fetchNotes = async () => {
     const response = await fetch(`${host}/api/notes/fetchallnotes`, {
       headers: { "auth-token":localStorage.getItem('token') },
@@ -96,7 +95,9 @@ const NoteState = (props) => {
     const data = await response.json();
     setnotes(data);
   };
-
+  
+  // Edit a note-=--2
+  
   const editNote = async (id, title, description, tag) => {
     try {
       const response = await fetch(`${host}/api/notes/updatenote/${id}`, {

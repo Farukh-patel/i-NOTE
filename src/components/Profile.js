@@ -12,7 +12,7 @@ function Profile(props) {
         const response = await fetch(`${host}/api/auth/profile`, {
           method: "GET",
           headers: {
-            "auth-token": localStorage.getItem("token"), // Use a dynamic token in production
+            "auth-token": localStorage.getItem("token"), 
           },
         });
 
@@ -54,7 +54,6 @@ function Profile(props) {
               width="150"
               height="150"
             />
-
 
             <p><strong>Name:</strong> {userData.name}</p>
             <p><strong>Email:</strong> {userData.email}</p>
