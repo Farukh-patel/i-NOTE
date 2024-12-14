@@ -8,7 +8,7 @@ const path = require("path");
 const router = express.Router();
 const User = require("../models/User");
 const fetchUser = require("../midlewares/fetchUser");
-const JWT_SECRET = "farukhis$uperman"; 
+const JWT_SECRET =process.env.JWT-SECRET;
 
 // Configure Multer for file storage
 const storage = multer.diskStorage({
