@@ -25,7 +25,6 @@ const Login = (props) => {
             props.showAlert("loged in successfully", "success");
             // console.log("authToken received is ", json.authToken);
 
-
         }
         else {
             props.showAlert("invalid credentials", "danger");

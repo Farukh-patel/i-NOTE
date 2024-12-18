@@ -103,16 +103,12 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (!user) {
-        return res
-          .status(400)
-          .json({ error: "Please login with correct credentials" });
+        return res.status(400).json({ error: "Please login with correct credentials" });
       }
 
       const passCompare = await bcrypt.compare(password, user.password);
       if (!passCompare) {
-        return res
-          .status(400)
-          .json({ error: "Please login with correct credentials" });
+        return res.status(400).json({ error: "Please login with correct credentials" });
       }
 
       const data = { user: { id: user.id } };
@@ -157,8 +153,7 @@ router.get("/profile", fetchUser, async (req, res) => {
 // PUT route to update user profile
 router.put(
   "/updateprofile",
-  fetchUser,
-  upload.single("profileImage"), // Handle file upload
+  fetchUser, upload.single("profileImage"), // Handle file upload
   async (req, res) => {
     const { email, name } = req.body;
 
@@ -170,11 +165,7 @@ router.put(
         updatedProfile.profileImage = `/uploads/${req.file.filename}`;
       }
 
-      const user = await User.findByIdAndUpdate(
-        req.user.id,
-        { $set: updatedProfile },
-        { new: true }
-      );
+      const user = await User.findByIdAndUpdate( req.user.id, { $set: updatedProfile }, { new: true } );
 
       if (!user) {
         return res.status(404).send("User not found");

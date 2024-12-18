@@ -35,14 +35,10 @@ function Profile(props) {
 
   return (
     <>
-      <div
-        className={`container ${mode === "light" ? "card-body-light" : "card-body-dark"
-          }`}
-      >
+      <div className={`container ${mode === "light" ? "card-body-light" : "card-body-dark" }`} >
         {error && <p className="text-danger">{error}</p>} {/* Error message */}
         {userData ? (
           <div className="text-center">
-            {/* Display profile image */}
             <img
               src={
                 userData.profileImage && userData.profileImage !== "/profileImage.png"

@@ -43,7 +43,7 @@ router.post( "/addnote",fetchUser,[
 //route3:update any note using notes id ,using :/api/notes/updatenote/:id | authentication required
 
 router.put("/updatenote/:id", fetchUser, async (req, res) => {
-  const { title, description, tag } = req.body;
+  const { title, description, tag } = req.body;                                                                                                                                                                                                                                                                                                                                                                                                                 
   try {
     //update cobject jiske ander data dalenge
     const updatedNote = {};
@@ -70,11 +70,7 @@ router.put("/updatenote/:id", fetchUser, async (req, res) => {
     }
 
     //if we found the note that is to be updated then updat it
-    note = await Notes.findByIdAndUpdate(
-      req.params.id,
-      { $set: updatedNote },
-      { new: true }
-    );
+    note = await Notes.findByIdAndUpdate( req.params.id,{ $set: updatedNote },{ new: true });
     res.json({ note });
   } catch (error) {
     console.log(error.message);
